@@ -7,6 +7,7 @@ const auth = require('./middlewares/auth');
 const { logRequest, logError } = require('./middlewares/logging');
 const connectDB = require('./config/connect');
 const { NotFoundError } = require('./errors');
+const { errorHandler } = require('./middlewares/errors');
 
 const app = express();
 
@@ -38,11 +39,7 @@ app.use('*', (req, res, next) => {
 app.use(logError);
 app.use(errors());
 
-app.use((err, req, res, next) => {
-  const statusCode = err.statusCode || 500;
-  const message = err.message || 'Internal Server Error';
-  res.status(statusCode).send({ message });
-});
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
