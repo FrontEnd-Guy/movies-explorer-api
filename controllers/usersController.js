@@ -25,6 +25,9 @@ exports.updateMe = async (req, res, next) => {
     if (error instanceof mongoose.Error.ValidationError) {
       return next(new InvalidError('Error updating user information'));
     }
+    if (error.code === 11000 && error.keyPattern.email) {
+      return next(new InvalidError('Email already exists'));
+    }
     return next(error);
   }
 };
