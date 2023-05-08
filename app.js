@@ -9,6 +9,7 @@ const { logRequest, logError } = require('./middlewares/logging');
 const connectDB = require('./config/connect');
 const { NotFoundError } = require('./errors');
 const { errorHandler } = require('./middlewares/errors');
+const rateLimiter = require('./config/rateLimiter');
 
 const app = express();
 
@@ -30,6 +31,8 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+
+app.use(rateLimiter);
 
 app.use(authRoutes);
 app.use(auth); // Защита всех следующих роутов авторизацией
