@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 const { errors } = require('celebrate');
 const userRoutes = require('./routes/users');
 const movieRoutes = require('./routes/movies');
@@ -16,6 +17,17 @@ connectDB(); // Подключение к базе данных при запу�
 app.use(express.json());
 
 app.use(logRequest);
+
+const corsOptions = {
+  origin: [
+    'http://localhost:3000',
+    'http://pavel.nomoredomains.monster',
+    'https://pavel.nomoredomains.monster'],
+  optionsSuccessStatus: 200,
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 app.use(authRoutes);
 app.use(auth); // Защита всех следующих роутов авторизацией
