@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+
+const { NODE_ENV, JWT_SECRET } = process.env;
 const User = require('../models/User');
 
 const {
@@ -49,7 +51,7 @@ const login = async (req, res, next) => {
       throw new UnauthorizedError('Invalid email or password');
     }
 
-    const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: '7d' });
+    const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' });
     return res.status(200).send({ token });
   } catch (error) {
     return next(error);
