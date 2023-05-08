@@ -10,6 +10,7 @@ const connectDB = require('./config/connect');
 const { NotFoundError } = require('./errors');
 const { errorHandler } = require('./middlewares/errors');
 const rateLimiter = require('./config/rateLimiter');
+const { PAGE_NOT_FOUND_ERR_MSG } = require('./utils/constants');
 
 const app = express();
 
@@ -39,7 +40,7 @@ app.use(auth); // Защита всех следующих роутов авто
 app.use('/users', userRoutes);
 app.use('/movies', movieRoutes);
 app.use('*', (req, res, next) => {
-  next(new NotFoundError('404. Page Not Found.'));
+  next(new NotFoundError(PAGE_NOT_FOUND_ERR_MSG));
 });
 
 app.use(logError);

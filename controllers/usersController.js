@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const User = require('../models/User');
 const { InvalidError, ConflictError } = require('../errors');
+const { ERROR_UPDATING_USER_ERR_MSG, EMAIL_ALREADY_EXISTS_ERR_MSG } = require('../utils/constants');
 
 exports.getMe = async (req, res, next) => {
   try {
@@ -23,10 +24,10 @@ exports.updateMe = async (req, res, next) => {
     return res.status(200).send(user);
   } catch (error) {
     if (error instanceof mongoose.Error.ValidationError) {
-      return next(new InvalidError('Error updating user information'));
+      return next(new InvalidError(ERROR_UPDATING_USER_ERR_MSG));
     }
     if (error.code === 11000 && error.keyPattern.email) {
-      return next(new ConflictError('Email already exists'));
+      return next(new ConflictError(EMAIL_ALREADY_EXISTS_ERR_MSG));
     }
     return next(error);
   }

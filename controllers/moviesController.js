@@ -7,6 +7,13 @@ const {
   ForbiddenError,
 } = require('../errors');
 
+const {
+  ERROR_CREATING_MOVIE_ERR_MSG,
+  MOVIE_NOT_FOUND_ERR_MSG,
+  CANT_DELETE_OTHERS_MOVIES_ERR_MSG,
+  INVALID_MOVIE_ID_ERR_MSG,
+} = require('../utils/constants');
+
 exports.getMovies = async (req, res, next) => {
   try {
     const movies = await Movie.find({ owner: req.user._id });
@@ -23,7 +30,7 @@ exports.createMovie = async (req, res, next) => {
     return res.status(201).send(movie);
   } catch (error) {
     if (error instanceof mongoose.Error.ValidationError) {
-      return next(new InvalidError('Error creating movie'));
+      return next(new InvalidError(ERROR_CREATING_MOVIE_ERR_MSG));
     }
     return next(error);
   }
@@ -34,16 +41,16 @@ exports.deleteMovie = async (req, res, next) => {
     const movie = await Movie.findById(req.params._id);
 
     if (!movie) {
-      return next(new NotFoundError('Movie not found'));
+      return next(new NotFoundError(MOVIE_NOT_FOUND_ERR_MSG));
     }
     if (movie.owner.toString() !== req.user._id) {
-      return next(new ForbiddenError("You can't delete other people's movies"));
+      return next(new ForbiddenError(CANT_DELETE_OTHERS_MOVIES_ERR_MSG));
     }
     await Movie.deleteOne(movie);
     return res.status(200).send({ message: 'Movie deleted' });
   } catch (error) {
     if (error instanceof mongoose.Error.CastError) {
-      return next(new InvalidError('Invalid movie id'));
+      return next(new InvalidError(INVALID_MOVIE_ID_ERR_MSG));
     }
     return next(error);
   }
