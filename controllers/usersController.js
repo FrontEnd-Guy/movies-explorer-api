@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const User = require('../models/User');
-const { InvalidError } = require('../errors');
+const { InvalidError, ConflictError } = require('../errors');
 
 exports.getMe = async (req, res, next) => {
   try {
@@ -26,7 +26,7 @@ exports.updateMe = async (req, res, next) => {
       return next(new InvalidError('Error updating user information'));
     }
     if (error.code === 11000 && error.keyPattern.email) {
-      return next(new InvalidError('Email already exists'));
+      return next(new ConflictError('Email already exists'));
     }
     return next(error);
   }
