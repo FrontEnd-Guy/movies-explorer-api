@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const helmet = require('helmet');
 const cors = require('cors');
 const { errors } = require('celebrate');
 const { userRoutes, movieRoutes, authRoutes } = require('./routes');
@@ -10,6 +11,8 @@ const { NotFoundError } = require('./errors');
 const { errorHandler } = require('./middlewares/errors');
 
 const app = express();
+
+app.use(helmet());
 
 connectDB(); // Подключение к базе данных при запуске сервера
 
