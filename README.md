@@ -1,7 +1,30 @@
-# movies-explorer-api
-## Ссылки на проект
+# 🎬 Movies Explorer API 
 
-IP-адрес 51.250.71.26
+This repository contains the backend logic and API for the **Movies Explorer** service.
 
-Frontend https://pavel.nomoredomains.monster
-Backend https://api.pavel.nomoredomains.monster
+## 🔗 Project Links
+
+- 🖥 **IP Address:** [51.250.71.26](http://51.250.71.26)
+- 🌐 **Frontend Repository:** [Movies Explorer Frontend on GitHub](https://github.com/FrontEnd-Guy/movies-explorer-frontend)
+- 🌐 **Frontend Deployment:** [pavel.nomoredomains.monster](https://pavel.nomoredomains.monster)
+- ☁ **Backend/API Deployment:** [api.pavel.nomoredomains.monster](https://api.pavel.nomoredomains.monster)
+
+## 🛠 Technology Stack
+
+- **Framework:** Express.js
+- **Database:** MongoDB
+- **Server:** NodeJS
+- **Deployment:** Nginx
+- **Authentication:** JWT
+
+## 🔒 Features
+
+- Express server infrastructure
+- Connection to the MongoDB database
+- API resource schemas and models
+- Security implementations with logging, authentication, and authorization
+- Backend deployment on a dedicated server with Nginx
+
+## 📬 Contact
+
+For further inquiries or any issues related to the project, feel free to reach out!
