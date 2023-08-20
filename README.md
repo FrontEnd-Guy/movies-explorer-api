@@ -26,7 +26,4 @@ This repository contains the backend logic and API for the **Movies Explorer** s
 
 ## 📬 Contact
 
-For further inquiries or any issues related to the project, feel free to reach out!
-
-- **Email:** [trade93@gmail.com](mailto:trade93@gmail.com)
-- **Telegram:** [@pavelzakh](https://t.me/pavelzakh)
+For questions, feedback, or any issues related to the project, please reach out or raise an issue on GitHub.
