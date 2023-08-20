@@ -4,7 +4,6 @@ This repository contains the backend logic and API for the **Movies Explorer** s
 
 ## 🔗 Project Links
 
-- 🖥 **IP Address:** [51.250.71.26](http://51.250.71.26)
 - 🌐 **Frontend Repository:** [Movies Explorer Frontend on GitHub](https://github.com/FrontEnd-Guy/movies-explorer-frontend)
 - 🌐 **Frontend Deployment:** [pavel.nomoredomains.monster](https://pavel.nomoredomains.monster)
 - ☁ **Backend/API Deployment:** [api.pavel.nomoredomains.monster](https://api.pavel.nomoredomains.monster)
@@ -28,3 +27,6 @@ This repository contains the backend logic and API for the **Movies Explorer** s
 ## 📬 Contact
 
 For further inquiries or any issues related to the project, feel free to reach out!
+
+- **Email:** [trade93@gmail.com](mailto:trade93@gmail.com)
+- **Telegram:** [@pavelzakh](https://t.me/pavelzakh)
