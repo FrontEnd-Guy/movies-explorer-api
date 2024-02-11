@@ -23,10 +23,7 @@ app.use(express.json());
 app.use(logRequest);
 
 const corsOptions = {
-  origin: [
-    'http://localhost:3000',
-    'http://pavel.nomoredomains.monster',
-    'https://pavel.nomoredomains.monster'],
+  origin: process.env.ALLOWED_DOMAINS.split(','),
   optionsSuccessStatus: 200,
   credentials: true,
 };
@@ -48,7 +45,7 @@ app.use(errors());
 
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3003;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
